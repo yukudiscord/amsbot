@@ -94,8 +94,8 @@ client.on('message', async msg => {
          
          
            if (!message.member.roles.find("CONTROL")) {
-               
-             return;
+               message.channel.send('Ошибка! У вас нету роли CONTROL. У вас должна быть эта роль, что бы использовать команду.');
+               return;
            }
          
          
