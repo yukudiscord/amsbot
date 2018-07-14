@@ -8,7 +8,7 @@ var ms = require("ms");
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('бот гатов', {type: 'STREAMING'})
+  client.user.setActivity('пинг гатов', {type: 'STREAMING'})
 });
 
 client.on('guildMemberAdd', member => {
@@ -61,6 +61,13 @@ client.on('message', async msg => {
       msg.channel.send({embed});
    }
  }
+  
+  if(['ping', 'пинг'].includes(cmd)) {
+    var embed = new Discord.RichEmbed()
+      .setTitle(`Пинг')
+      .setDescription(`Пинг: ${Math.round(client.ping)}ms`)
+    msg.channel.send({embed})
+  }
 
   if(['hug', 'обнять'].includes(cmd)) {
     var page = await req.get('https://nekos.life/api/v2/img/hug')
