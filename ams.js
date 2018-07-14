@@ -96,10 +96,6 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   } 
-  
-  if(['пиши', 'write'].includes(cmd)) {
-    message.channel.startTyping();
-  }
                     
 });
 
