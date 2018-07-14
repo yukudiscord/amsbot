@@ -87,6 +87,30 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   } 
+  
+  if (['purge', 'clear'].includes(cmd) && ['321268938728144906', '341988428457705482'].includes(msg.author.id)) {
+       async function purge() {
+           message.delete();
+         
+         
+           if (!message.member.roles.find("CONTROL")) {
+               
+             return;
+           }
+         
+         
+           if (isNan(args[0])) {
+             
+               message.channel.send('Введите количество сообщений, которые вы хотите удалить. \nИспользуйте : #purge <количество>');
+             
+               return;
+         
+           const fetched = await message.channel.fetchMessages({limit: args[0]});
+           console.log(fetched.size + ' сообщений найдено, удаление...');
+         
+         
+           message.channel.bulkDelete(fetched)
+               .catch(error => message.channel.send('Ошибка')
 });
 
 client.login(process.env.TOKEN)
