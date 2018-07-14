@@ -76,6 +76,7 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   }
+   
   if(['pet', 'погладить', 'pat', 'питомец'].includes(cmd)) {
     var page = await req.get('https://nekos.life/api/v2/img/pat')
     var data = page.body.url
