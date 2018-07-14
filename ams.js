@@ -35,7 +35,6 @@ client.on('message', async msg => {
   }
 
   if (['eval', 'евал'].includes(cmd) && owners.includes(msg.author.id)) {
-    return message.reply("Прости, но ты не можешь использовать это!")
     var code = args.join(' ');
     try {
       let evaled = eval(code);
