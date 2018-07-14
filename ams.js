@@ -34,7 +34,12 @@ client.on('message', async msg => {
     msg.channel.send({embed})
   }
 
-  if (['eval', 'евал'].includes(cmd) && owners.includes(msg.author.id)) {
+  if(['eval', 'евал'].includes(cmd)) {
+    if(!owners.includes(msg.author.id)) 
+      var embed = new Discord.RichEmbed()
+        .setTitle('Ошибка')
+        .setDescription('Вы не можете использовать эту комманду')
+      return msg.channel.send({embed})
     var code = args.join(' ');
     try {
       let evaled = eval(code);
