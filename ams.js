@@ -30,7 +30,7 @@ client.on('message', async msg => {
   if(['help', 'помощь', 'halp'].includes(cmd)) {
     var owner = await client.fetchUser('321268938728144906')
     var embed = new Discord.RichEmbed()
-      .setTitle(`Вот ваша помощь, ${msg.author.tag}. Выберите категориб`)
+      .setTitle(`Вот ваша помощь, ${msg.author.tag}. Выберите категорию`)
       .setDescription(`Бота сделал "${owner.tag}". \nКатегории: Развлечения - funhelp. Для админов - adminhelp.`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
@@ -39,8 +39,8 @@ client.on('message', async msg => {
   
     if(['funhelp', 'фанхелп'].includes(cmd)) {
     var embed = new Discord.RichEmbed()
-      .setTitle(`Вот ваша помощь по развлечениям, ${msg.author.tag}. Выберите категориб`)
-      .setDescription(`Бота сделал "${owner.tag}". \nКатегории: Развлечения - funhelp. Для админов - adminhelp.`)
+      .setTitle(`Вот ваша помощь по развлечениям, ${msg.author.tag}.`)
+      .setDescription(`Бота сделал "${owner.tag}". \n  slap - ударить кого-то\n  p`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
@@ -87,7 +87,7 @@ client.on('message', async msg => {
     msg.channel.send({embed})
   }
 
-  if(['pat', 'погладить'].includes(cmd)) {
+  if(['pat', 'погладить', 'pet'].includes(cmd)) {
   var page = await req.get('https://nekos.life/api/v2/img/pat')
   var data = page.body.url
   var embed = new Discord.RichEmbed()
