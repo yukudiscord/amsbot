@@ -88,6 +88,15 @@ client.on('message', async msg => {
     msg.channel.send({embed})
   } 
   
+  if(['lizard', 'ящерица', 'ящер'].includes(cmd)) {
+  var page = await req.get('https://nekos.life/api/v2/img/pat')
+  var data = page.body.url
+  var embed = new Discord.RichEmbed()
+      .setTitle('Ты увидел хрен знает кого')
+      .setImage(data)
+    msg.channel.send({embed})
+  } 
+  
   if (['purge', 'clear'].includes(cmd)) {
        async function purge() {
            message.delete();
@@ -111,6 +120,7 @@ client.on('message', async msg => {
          
            message.channel.bulkDelete(fetched)
                .catch(error => message.channel.send('Ошибка')
+                      
 });
 
 client.login(process.env.TOKEN)
