@@ -30,9 +30,19 @@ client.on('message', async msg => {
   if(['help', 'помощь', 'halp'].includes(cmd)) {
     var owner = await client.fetchUser('321268938728144906')
     var embed = new Discord.RichEmbed()
-      .setTitle(`Вот ваша помощь, ${msg.author.tag}`)
-      .setDescription(`Бота сделал "${owner.tag}". \nКомманды:\n  eval - Выполнить код\n  hug - Обнять кого-го\n  slap - ударить кого-то\n  pat - погладить кого-то`)
+      .setTitle(`Вот ваша помощь, ${msg.author.tag}. Выберите категориб`)
+      .setDescription(`Бота сделал "${owner.tag}". \nКатегории: Развлечения - funhelp. Для админов - adminhelp.`)
       .setColor("RANDOM")
+      .setFooter(`Префикс - #`)
+    msg.channel.send({embed})
+  }
+  
+    if(['funhelp', 'фанхелп'].includes(cmd)) {
+    var embed = new Discord.RichEmbed()
+      .setTitle(`Вот ваша помощь по развлечениям, ${msg.author.tag}. Выберите категориб`)
+      .setDescription(`Бота сделал "${owner.tag}". \nКатегории: Развлечения - funhelp. Для админов - adminhelp.`)
+      .setColor("RANDOM")
+      .setFooter(`Префикс - #`)
     msg.channel.send({embed})
   }
 
