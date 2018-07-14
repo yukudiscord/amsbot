@@ -1,5 +1,6 @@
-var Discord = require('discord.js');
-var client = new Discord.Client();
+var Discord = require('discord.js')
+var req = require('snekfetch')
+var client = new Discord.Client()
 
 var p = '#'
 var owners = ['321268938728144906', '341988428457705482']
@@ -20,11 +21,11 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', async msg => {
-  if(msg.author.bot) return;
-  if(msg.content.indexOf(p) !== 0) return;
+  if(msg.author.bot) return
+  if(msg.content.indexOf(p) !== 0) return
 
-  var args = msg.content.slice(p.length).trim().split(/ +/g);
-  var cmd = args.shift().toLowerCase();
+  var args = msg.content.slice(p.length).trim().split(/ +/g)
+  var cmd = args.shift().toLowerCase()
 
   if(['help', 'помощь'].includes(cmd)) {
     var owner = await client.fetchUser('321268938728144906')
