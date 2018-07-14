@@ -4,10 +4,11 @@ var client = new Discord.Client()
 
 var p = '#'
 var owners = ['321268938728144906', '341988428457705482']
+var ms = require("ms");
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('#help', {type: 'STREAMING'})
+  client.user.setActivity('бот гатов', {type: 'STREAMING'})
 });
 
 client.on('guildMemberAdd', member => {
@@ -96,6 +97,41 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   } 
+  
+  if(['mute', 'мут'].includes(cmd)) && ['321268938728144906', '341988428457705482'] {
+    let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(tomute.hasPermission("ADMINISTRATOR")) return message.reply("Не могу замутить");
+    let muterole = message.guild.roles.find(`name`, "Muted");
+    if(!muterole){
+      try{
+        muterole = await message.guild.createRole({
+          name: "Muted"
+          color:#000000
+          permissions:[]
+        })
+        message.guild.channels.forEach(async (logs🐔, 467524921191301130) => {
+          await channel.overwritePermission(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      }catch(e){
+        console.log(e.stack);
+      }
+     }
+    let mutetime = args[1];
+    if(!mutetime) return message.reply("Ошибка : слишком маленькое число")
+    
+    await(tomute.addRole(Muted, 467686408824553484));
+    message.reply(`<@${tomute.id}> был замучен на ${ms(mutetime)}`);
+    
+    setTimeout(function(){
+      tomute.removeRole(Muted, 467686408824553484);
+      message.channel.send(`<@${tomute.id}> был размучен`)
+    }, ms(mutetime));
+   }
+    
+    
                      
 });
 
