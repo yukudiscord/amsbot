@@ -89,7 +89,7 @@ client.on('message', async msg => {
   } 
   
   if(['lizard', 'ящерица', 'ящер'].includes(cmd)) {
-  var page = await req.get('https://nekos.life/api/v2/img/pat')
+  var page = await req.get('https://nekos.life/api/v2/img/lizard')
   var data = page.body.url
   var embed = new Discord.RichEmbed()
       .setTitle('Ты увидел хрен знает кого')
