@@ -40,7 +40,8 @@ client.on('message', async msg => {
     if(['funhelp', 'фанхелп'].includes(cmd)) {
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь по развлечениям, ${msg.author.tag}.`)
-      .setDescription(`Бота сделал "${owner.tag}". \n  slap - ударить кого-то\n  p`)
+      .setDescription(`Бота сделал "${owner.tag}". \n  slap - ударить кого-то\n  pet - погладить кого-то\n  hug - обнять кого-то
+`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
