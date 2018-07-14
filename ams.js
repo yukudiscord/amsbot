@@ -6,7 +6,7 @@ var owners = ['321268938728144906', '341988428457705482']
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('#help', {type: 'PLAYING'})
+  client.user.setActivity('#help', {type: 'WATCHING'})
 });
 
 client.on('guildMemberAdd', member => {
