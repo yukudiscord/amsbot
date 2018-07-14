@@ -36,12 +36,7 @@ client.on('message', async msg => {
     msg.channel.send({embed})
   }
 
-  if(['eval', 'евал'].includes(cmd)) {
-    if(!owners.includes(msg.author.id)) 
-      var embed = new Discord.RichEmbed()
-        .setTitle('Ошибка')
-        .setDescription('Вы не можете использовать эту комманду')
-      return msg.channel.send({embed})
+ if (['eval', 'евал'].includes(cmd) && ['321268938728144906', '341988428457705482'].includes(msg.author.id)) {
     var code = args.join(' ');
     try {
       let evaled = eval(code);
@@ -61,8 +56,8 @@ client.on('message', async msg => {
         .setColor('0xff0202')
         .setDescription(`📥 Input: \n \`\`\`${code}\`\`\`\n 📤 Output:\n  \`\`\`${(err)}\`\`\``)
       msg.channel.send({embed});
-    }
-  }
+   }
+ }
 
   if(['hug', 'обнять'].includes(cmd)) {
     var page = await req.get('https://nekos.life/api/v2/img/hug')
