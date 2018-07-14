@@ -96,31 +96,6 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   } 
-  
-  if (['purge', 'clear'].includes(cmd)) {
-       async function purge() {
-           message.delete();
-         
-         
-           if (!message.member.roles.find("CONTROL")) {
-               message.channel.send('Ошибка! У вас нету роли CONTROL. У вас должна быть эта роль, что бы использовать команду.');
-               return;
-           }
-         
-         
-           if (isNan(args[0])) {
-             
-               message.channel.send('Введите количество сообщений, которые вы хотите удалить. \nИспользуйте : #purge <количество>');
-             
-               return;
-         
-           const fetched = await message.channel.fetchMessages({limit: args[0]});
-           console.log(fetched.size + ' сообщений найдено, удаление...');
-         
-         
-           message.channel.bulkDelete(fetched)
-               .catch(error => message.channel.send('Ошибка')
-                      
 });
 
 client.login(process.env.TOKEN)
