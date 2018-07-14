@@ -7,7 +7,7 @@ var owners = ['321268938728144906', '341988428457705482']
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('#help | AMS', {type: 'WATCHING'})
+  client.user.setActivity('питомца', {type: 'WATCHING'})
 });
 
 client.on('guildMemberAdd', member => {
@@ -76,6 +76,15 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   }
+
+  if(['pat', 'погладить'].includes(cmd)) {
+  var page = await req.get('https://nekos.life/api/v2/img/pat')
+  var data = page.body.url
+  var embed = new Discord.RichEmbed()
+      .setTitle('Ты погладил хрен знает кого')
+      .setImage(data)
+    msg.channel.send({embed})
+  } 
 });
 
 client.login(process.env.TOKEN)
