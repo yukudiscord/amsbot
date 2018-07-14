@@ -7,7 +7,7 @@ var owners = ['321268938728144906', '341988428457705482']
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('питомца', {type: 'WATCHING'})
+  client.user.setActivity('обновку.', {type: 'WATCHING'})
 });
 
 client.on('guildMemberAdd', member => {
@@ -47,6 +47,14 @@ client.on('message', async msg => {
     msg.channel.send({embed})
   }
 
+    if(['funhelp', 'фанхелп'].includes(cmd)) {
+    var embed = new Discord.RichEmbed()
+      .setTitle(`Вот ваша помощь по помощи для админов, ${msg.author.tag}.`)
+      .setDescription(`Бота сделал "${owner.tag}". \n  eval - выполнить команду`)
+      .setColor("RANDOM")
+      .setFooter(`Префикс - #`)
+    msg.channel.send({embed})
+  }
  if (['eval', 'евал'].includes(cmd) && ['321268938728144906', '341988428457705482'].includes(msg.author.id)) {
     var code = args.join(' ');
     try {
