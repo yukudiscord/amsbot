@@ -96,6 +96,11 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   } 
+  
+  if(['ping'].includes(cmd)) {
+    const embed = new Discord.RichEmbed()
+          .setTitle('Pong! \`${client.pings[0]}ms\``)
+                    
 });
 
 client.login(process.env.TOKEN)
