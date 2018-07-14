@@ -1,14 +1,56 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+var Discord = require('discord.js');
+var client = new Discord.Client();
+var p = '!'
 
 client.on('ready', () => {
   console.log(client.user.tag);
 });
 
-client.on('message', msg => {
-  if (msg.content === 'а') {
-    msg.reply('б!');
+client.on('guildMemberAdd', member => {
+  member.addRole('467526203713126410')
+  var embed = new Discord.RichEmbed()
+    .setTitle('Добро пожаловать на сервер AMS')
+    .setDescription('Для дальнейшего общения просим прочитать #information. Там находится вся необходимая информация.')
+    .setFooter('Спасибо, что присоединились именно к нам')
+    .setThumbnail('https://cdn.discordapp.com/attachments/360125122717155328/467417487323955202/402342-svetik.jpg')
+  member.send({embed})
+ 
+});
+
+client.on('message', async msg => {
+  if(msg.author.bot) return;
+  if(msg.content.indexOf(p) !== 0) return;
+
+  var args = msg.content.slice(p.length).trim().split(/ +/g);
+  var cmd = args.shift().toLowerCase();
+
+  if(['help', 'помощь'].includes(cmd)) {
+    var owner = await client.fetchUser('321268938728144906')
+    msg.channel.send(`Бота сделал "${owner.tag}". \nКомманды:\n  eval - Выполнить код`)
   }
+
+  if (['eval', 'евал'].includes(cmd) && ['321268938728144906', '341988428457705482'].includes(msg.author.id)) {
+    var code = args.join(' ');
+    try {
+      let evaled = eval(code);
+      if (!code) {
+        return msg.channel.send('Для выполнения команды eval необходим код');
+      }
+      if (typeof evaled !== 'string')
+        evaled = require('util').inspect(evaled)
+        var embed = new Discord.RichEmbed()
+          .setTitle(`Эвал успешно выполнен`)
+          .setColor('0x4f351')
+          .setDescription(`📥 Input: \n \`\`\`${code}\`\`\` \n 📤 Output: \n  \`\`\`${(evaled)}\`\`\``)
+        msg.channel.send({embed});
+    } catch (err) {
+      var embed = new Discord.RichEmbed()
+        .setTitle('Ошибка выполнения кода')
+        .setColor('0xff0202')
+        .setDescription(`📥 Input: \n \`\`\`${code}\`\`\`\n 📤 Output:\n  \`\`\`${(err)}\`\`\``)
+      msg.channel.send({embed});
+   }
+ }
 });
 
 client.login(process.env.TOKEN)
