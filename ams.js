@@ -28,7 +28,7 @@ client.on('message', async msg => {
 
   if(['help', 'помощь'].includes(cmd)) {
     var owner = await client.fetchUser('321268938728144906')
-    var embed = client.RichEmbed()
+    var embed = Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}`)
       .setDescription(`Бота сделал "${owner.tag}". \nКомманды:\n  eval - Выполнить код`)
     msg.channel.send({embed})
