@@ -32,7 +32,7 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали "${owner.tag}" и "${owner1.tag}".\n\n **Развлечения**\n  slap - ударить кого-то\n  hug - обнять кого-то\n  pet - погладить кого-то\n\n**Основные**\n  eval - выполнить`)
+      .setDescription(`Бота делали "${owner.tag}" и "${owner1.tag}".\n\n **Развлечения**\n  slap - ударить кого-то\n  hug - обнять кого-то\n  pet - погладить кого-то\n\n**Основные**\n  eval - выполнить\n\n`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
