@@ -88,7 +88,7 @@ client.on('message', async msg => {
     msg.channel.send({embed})
   } 
   
-  if (['purge', 'clear'].includes(cmd) && ['321268938728144906', '341988428457705482'].includes(msg.author.id)) {
+  if (['purge', 'clear'].includes(cmd)) {
        async function purge() {
            message.delete();
          
