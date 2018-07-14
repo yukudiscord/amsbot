@@ -4,7 +4,6 @@ var client = new Discord.Client()
 
 var p = '#'
 var owners = ['321268938728144906', '341988428457705482']
-var ms = require("ms");
 
 client.on('ready', () => {
   console.log(client.user.tag);
