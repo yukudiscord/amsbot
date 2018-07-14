@@ -55,6 +55,7 @@ client.on('message', async msg => {
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
   }
+  
  if (['eval', 'евал'].includes(cmd) && ['321268938728144906', '341988428457705482'].includes(msg.author.id)) {
     var code = args.join(' ');
     try {
