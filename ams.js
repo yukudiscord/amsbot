@@ -7,7 +7,7 @@ var owners = ['321268938728144906', '341988428457705482']
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('обнову бота', {type: 'WATCHING'})
+  client.user.setActivity('#help | AMS', {type: 'WATCHING'})
 });
 
 client.on('guildMemberAdd', member => {
@@ -27,7 +27,7 @@ client.on('message', async msg => {
   var args = msg.content.slice(p.length).trim().split(/ +/g)
   var cmd = args.shift().toLowerCase()
 
-  if(['help', 'помощь'].includes(cmd)) {
+  if(['help', 'помощь', 'halp'].includes(cmd)) {
     var owner = await client.fetchUser('321268938728144906')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}`)
