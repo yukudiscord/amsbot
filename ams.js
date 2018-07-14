@@ -31,6 +31,7 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}`)
       .setDescription(`Бота сделал "${owner.tag}". \nКомманды:\n  eval - Выполнить код`) 
+      .setColor("RANDOM")
     msg.channel.send({embed})
   }
 
