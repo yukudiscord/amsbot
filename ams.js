@@ -1,9 +1,12 @@
 var Discord = require('discord.js');
 var client = new Discord.Client();
+
 var p = '!'
+var owners = ['321268938728144906', '341988428457705482']
 
 client.on('ready', () => {
   console.log(client.user.tag);
+  client.user.setActivity('в очко', {type: 'WATCHING'})
 });
 
 client.on('guildMemberAdd', member => {
@@ -14,7 +17,6 @@ client.on('guildMemberAdd', member => {
     .setFooter('Спасибо, что присоединились именно к нам')
     .setThumbnail('https://cdn.discordapp.com/attachments/360125122717155328/467417487323955202/402342-svetik.jpg')
   member.send({embed})
- 
 });
 
 client.on('message', async msg => {
@@ -26,10 +28,13 @@ client.on('message', async msg => {
 
   if(['help', 'помощь'].includes(cmd)) {
     var owner = await client.fetchUser('321268938728144906')
-    msg.channel.send(`Бота сделал "${owner.tag}". \nКомманды:\n  eval - Выполнить код`)
+    var embed = client.RichEmbed()
+      .setTitle(`Вот ваша помощь, ${msg.author.tag}`)
+      .setDescription(`Бота сделал "${owner.tag}". \nКомманды:\n  eval - Выполнить код`)
+    msg.channel.send({embed})
   }
 
-  if (['eval', 'евал'].includes(cmd) && ['321268938728144906', '341988428457705482'].includes(msg.author.id)) {
+  if (['eval', 'евал'].includes(cmd) && owners.includes(msg.author.id)) {
     var code = args.join(' ');
     try {
       let evaled = eval(code);
