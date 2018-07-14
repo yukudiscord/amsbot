@@ -1,7 +1,7 @@
 var Discord = require('discord.js');
 var client = new Discord.Client();
 
-var p = '+'
+var p = '#'
 var owners = ['321268938728144906', '341988428457705482']
 
 client.on('ready', () => {
