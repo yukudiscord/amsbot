@@ -6,6 +6,7 @@ var client = new Discord.Client()
 
 var p = '#'
 var owners = ['321268938728144906', '341988428457705482']
+var reports_id = '468071121963581440'
 
 client.on('ready', () => {
   console.log(client.user.tag);
@@ -34,7 +35,7 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n **Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n\n **Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n\n`)
+      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n **Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n\n **Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n  report [user] [rule] [description] - Сделать репорт на участника\n\n`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
@@ -183,6 +184,27 @@ client.on('message', async msg => {
     if(!member.banable) return msg.reply('Я не могу его/её забанить')
     member.ban()
     msg.channel.send(`${user.tag} забанен!`)
+  }
+
+  if(['report', 'репорт', 'жалоба'].includes(cmd)) {
+    args.shift()
+    var user = msg.mentions.users.first()
+    if(!user) return msg.reply('Ты должен указать пользователя')
+    var rule = args.shift()
+    if(!rule) return msg.reply('Ты должен указать правило')
+    var text = args.join(' ')
+    if(!text) return msg.reply('Ты должен указать описание')
+    var img = msg.attachments.first()
+    if(!img) return msg.reply('Ты должен добавить скриншот')
+    var embed = new Discord.RichEmbed()
+      .setTitle('Репорт')
+      .setAuthor(msg.author.tag, msg.author.avatarURL)
+      .setDescription(text)
+      .addField('Нарушенное правило', rule)
+      .addField('Нарушитель', `${user.tag} | ${user.id}`)
+      .setImage(img.url)
+    client.channels.get(reports_id).send({embed})
+    msg.delete()
   }
 })
 
