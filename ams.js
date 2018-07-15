@@ -9,7 +9,7 @@ var owners = ['321268938728144906', '341988428457705482']
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('цвет пинга  гатов', {type: 'STREAMING'})
+  client.user.setActivity('пиши', {type: 'STREAMING'})
 });
 
 client.on('guildMemberAdd', member => {
@@ -140,6 +140,10 @@ client.on('message', async msg => {
     var value = parseInt(args[0])
     var messages = await msg.channel.fetchMessages({limit: value})
     msg.channel.bulkDelete(messages)
+  }
+  
+  if(['typing', 'писать'].includes(cmd)) {
+            message.channel.startTyping();
   }
 })
 
