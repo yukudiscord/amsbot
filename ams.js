@@ -103,6 +103,7 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   } 
+})
 
 client.login(process.env.TOKEN)
 process.env.TOKEN = 'NULL'
