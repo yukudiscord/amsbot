@@ -66,8 +66,7 @@ client.on('message', async msg => {
   if(['ping', 'пинг'].includes(cmd)) {
     var embed = new Discord.RichEmbed()
       .setTitle('Пинг')
-      .setDescription(`Пинг: ${Math.round(client.ping)}ms`
-      .setColor("RANDOM")
+      .setDescription(`Пинг: ${Math.round(client.ping)}ms`    
     msg.channel.send({embed})
   }
 
