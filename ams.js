@@ -29,7 +29,7 @@ client.on('message', async msg => {
   var args = msg.content.slice(p.length).trim().split(/ +/g)
   var cmd = args.shift().toLowerCase()
 
-  if(['help', 'помощь', 'halp'].includes(cmd)) {
+  if(['help', 'помощь', 'помоги', 'памаги', 'помош', 'hlp', 'halp'].includes(cmd)) {
     var owner = await client.fetchUser('321268938728144906')
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
@@ -71,37 +71,52 @@ client.on('message', async msg => {
   }
 
   if(['hug', 'обнять'].includes(cmd)) {
+    var user = msg.mentions.users.first()
+    if(user) user = user.tag
+    else user = 'воздух'
+
     var page = await req.get('https://nekos.life/api/v2/img/hug')
     var data = page.body.url
     var embed = new Discord.RichEmbed()
-      .setTitle('Ты обнял хрен знает кого')
+      .setTitle(`Ты обнял ${user}`)
       .setImage(data)
     msg.channel.send({embed})
   }
 
   if(['slap', 'punch', 'ударить'].includes(cmd)) {
+    var user = msg.mentions.users.first()
+    if(user) user = user.tag
+    else user = 'воздух'
+
     var page = await req.get('https://nekos.life/api/v2/img/slap')
     var data = page.body.url
     var embed = new Discord.RichEmbed()
-      .setTitle('Ты ударил хрен знает кого')
+      .setTitle(`Ты ударил ${user}`)
       .setImage(data)
     msg.channel.send({embed})
   }
 
   if(['pat', 'погладить', 'pet'].includes(cmd)) {
-  var page = await req.get('https://nekos.life/api/v2/img/pat')
-  var data = page.body.url
-  var embed = new Discord.RichEmbed()
-      .setTitle('Ты погладил хрен знает кого')
+    var user = msg.mentions.users.first()
+    if(user) user = user.tag
+    else user = 'себя'
+
+    var page = await req.get('https://nekos.life/api/v2/img/pat')
+    var data = page.body.url
+    var embed = new Discord.RichEmbed()
+      .setTitle(`Ты погладил ${user}`)
       .setImage(data)
     msg.channel.send({embed})
   } 
   
   if(['lizard', 'ящерица', 'ящер'].includes(cmd)) {
-  var page = await req.get('https://nekos.life/api/v2/img/lizard')
-  var data = page.body.url
-  var embed = new Discord.RichEmbed()
-      .setTitle('Ты увидел хрен знает кого')
+    var user = msg.mentions.users.first()
+    if(user) user = user.tag
+    else user = 'хрен знает кого'
+    var page = await req.get('https://nekos.life/api/v2/img/lizard')
+    var data = page.body.url
+    var embed = new Discord.RichEmbed()
+      .setTitle(`Ты увидел ${user}`)
       .setImage(data)
     msg.channel.send({embed})
   } 
