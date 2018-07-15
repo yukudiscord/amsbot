@@ -179,10 +179,10 @@ client.on('message', async msg => {
     if(!user) return msg.reply('Вы не упомянули юзера')
     var member = await msg.guild.fetchMember(user)
     console.log(member)
-    if(member.highestRole.position >= msg.member.highestRole.position) return msg.reply('Вы не можете его кикнуть (одинаковая роль или выше)')
-    if(!member.banable) return msg.reply('Я не могу его/её кикнуть')
+    if(member.highestRole.position >= msg.member.highestRole.position) return msg.reply('Вы не можете его забанить (одинаковая роль или выше)')
+    if(!member.banable) return msg.reply('Я не могу его/её забанить')
     member.ban()
-    msg.channel.send(`${user.tag} кикнут!`)
+    msg.channel.send(`${user.tag} забанен!`)
   }
 })
 
