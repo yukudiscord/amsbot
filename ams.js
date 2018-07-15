@@ -34,7 +34,7 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n**Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n`)
+      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n**Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n\n**Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n\n`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
@@ -160,7 +160,30 @@ client.on('message', async msg => {
     else client.user.setActivity(args.join(' '), {type: cmd.toUpperCase()})
     msg.channel.send('Готово')
   }
-  
+
+  if(['kick', 'кик', 'кикнуть'].includes(cmd)) {
+    if(!msg.member.hasPermission('KICK_MEMBERS')) return msg.reply('Вы не можете использовать эту комманду.')
+    var user = msg.mentions.users.first()
+    if(!user) return msg.reply('Вы не упомянули юзера')
+    var member = await msg.guild.fetchMember(user)
+    console.log(member)
+    if(member.highestRole.position >= msg.member.highestRole.position) return msg.reply('Вы не можете его кикнуть (одинаковая роль или выше)')
+    if(!member.kickable) return msg.reply('Я не могу его/её кикнуть')
+    member.kick()
+    msg.channel.send(`${user.tag} кикнут!`)
+  }
+
+  if(['ban', 'бан', 'забанить'].includes(cmd)) {
+    if(!msg.member.hasPermission('BAN_MEMBERS')) return msg.reply('Вы не можете использовать эту комманду.')
+    var user = msg.mentions.users.first()
+    if(!user) return msg.reply('Вы не упомянули юзера')
+    var member = await msg.guild.fetchMember(user)
+    console.log(member)
+    if(member.highestRole.position >= msg.member.highestRole.position) return msg.reply('Вы не можете его кикнуть (одинаковая роль или выше)')
+    if(!member.banable) return msg.reply('Я не могу его/её кикнуть')
+    member.ban()
+    msg.channel.send(`${user.tag} кикнут!`)
+  }
 })
 
 client.login(process.env.TOKEN)
