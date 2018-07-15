@@ -1,3 +1,5 @@
+/* Тестирование PocketGit */
+
 var Discord = require('discord.js')
 var req = require('snekfetch')
 var client = new Discord.Client()
