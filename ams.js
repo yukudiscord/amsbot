@@ -143,6 +143,7 @@ client.on('message', async msg => {
   }
 
   if(['presence', 'game', 'stream', 'watch', 'watching', 'listen', 'listening'].includes(cmd) && owners.includes(msg.author.id)) {
+    if(!msg.member.hasPermission('MANAGE_MESSAGES')) return msg.reply('Вы не можете использовать эту комманду.')
     /*
     var presence = 0
     switch (cmd) {
