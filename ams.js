@@ -120,6 +120,19 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   } 
+  
+   if(['kiss', 'поцеловать', 'kissing'].includes(cmd)) {
+    var user = msg.mentions.users.first()
+    if(user) user = user.tag
+    else user = 'себя'
+
+    var page = await req.get('https://nekos.life/api/v2/img/kiss')
+    var data = page.body.url
+    var embed = new Discord.RichEmbed()
+      .setTitle(`Ты поцеловал ${user}`)
+      .setImage(data)
+    msg.channel.send({embed})
+  } 
 })
 
 client.login(process.env.TOKEN)
