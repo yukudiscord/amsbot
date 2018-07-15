@@ -160,35 +160,6 @@ client.on('message', async msg => {
     else client.user.setActivity(args.join(' '), {type: cmd.toUpperCase()})
     msg.channel.send('Готово')
   }
-  
-  if(['kick', 'кик].includes(cmd) && owners.includes(msg.author.id)) {
-      
-      
-    
-    let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!kUser) return message.channel.send("Ошибка : невозможно найти пользователя");
-    let kReason = args.join("").slice(22);
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Ошибка : этот участник не может быть кикнут");
-    if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("Ошибка : этот участник не может быть кикнут");
-  
-    let kickEmbed = new Discord.RichEmbed()
-    .setDescription("Кик")
-    .setColor("#e56b00")
-    .addField("С сервера был кикнут пользователь", '${kUser}`)
-    .addField("Кикнут пользователем", '<@${message.author.id}>')
-    .addField("Кикнуто в", message.channel)
-    .addField("Время", message.createdAt)
-    .addField("Reason", kReason)
-             
-    let kickChannel = message.guild.channels.find(`name`, "indidents");
-    if(!kickChannel) return message.channel.send("Не могу найти канал");
-  
-    message.guild.member(kUser).kick(kReason);
-    kickChannel.send(kickEmbed);
-
-      
-    return;
-  }
 })
 
 client.login(process.env.TOKEN)
