@@ -39,6 +39,7 @@ client.on('message', async msg => {
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
+    msg.delete();
   }
   
  if (['eval', 'евал'].includes(cmd) && owners.includes(msg.author.id)) {
@@ -61,6 +62,7 @@ client.on('message', async msg => {
         .setColor('0xff0202')
         .setDescription(`📥 Input: \n \`\`\`${code}\`\`\`\n 📤 Output:\n  \`\`\`${(err)}\`\`\``)
       msg.channel.send({embed});
+      msg.delete();
    }
  }
   
@@ -70,6 +72,7 @@ client.on('message', async msg => {
       .setDescription(`Пинг: ${Math.round(client.ping)}ms`)    
       .setColor("RANDOM")
     msg.channel.send({embed})
+    msg.delete();
   }
 
   if(['hug', 'обнять'].includes(cmd)) {
@@ -83,6 +86,7 @@ client.on('message', async msg => {
       .setTitle(`Ты обнял ${user}`)
       .setImage(data)
     msg.channel.send({embed})
+    msg.delete();
   }
 
   if(['slap', 'punch', 'ударить'].includes(cmd)) {
@@ -96,6 +100,7 @@ client.on('message', async msg => {
       .setTitle(`Ты ударил ${user}`)
       .setImage(data)
     msg.channel.send({embed})
+    msg.delete();
   }
 
   if(['pat', 'погладить', 'pet'].includes(cmd)) {
@@ -109,6 +114,7 @@ client.on('message', async msg => {
       .setTitle(`Ты погладил ${user}`)
       .setImage(data)
     msg.channel.send({embed})
+    msg.delete();
   } 
   
   if(['lizard', 'ящерица', 'ящер'].includes(cmd)) {
@@ -121,6 +127,7 @@ client.on('message', async msg => {
       .setTitle(`Ты увидел ${user}`)
       .setImage(data)
     msg.channel.send({embed})
+    msg.delete();
   } 
   
    if(['kiss', 'поцеловать', 'kissing'].includes(cmd)) {
@@ -134,6 +141,7 @@ client.on('message', async msg => {
       .setTitle(`Ты поцеловал ${user}`)
       .setImage(data)
     msg.channel.send({embed})
+    msg.delete();
   } 
 
   if(['clear', 'purge', 'очистить'].includes(cmd)) {
@@ -141,6 +149,7 @@ client.on('message', async msg => {
     var value = parseInt(args[0])
     var messages = await msg.channel.fetchMessages({limit: value})
     msg.channel.bulkDelete(messages)
+    msg.delete();
   }
 
   if(['presence', 'game', 'stream', 'watch', 'watching', 'listen', 'listening'].includes(cmd) && owners.includes(msg.author.id)) {
@@ -160,6 +169,7 @@ client.on('message', async msg => {
     if(cmd == 'stream') client.user.setActivity(args.join(' '), {url: 'https://google.com'})
     else client.user.setActivity(args.join(' '), {type: cmd.toUpperCase()})
     msg.channel.send('Готово')
+    msg.delete();
   }
 
   if(['kick', 'кик', 'кикнуть'].includes(cmd)) {
@@ -172,6 +182,7 @@ client.on('message', async msg => {
     if(!member.kickable) return msg.reply('Я не могу его/её кикнуть')
     member.kick()
     msg.channel.send(`${user.tag} кикнут!`)
+    msg.delete();
   }
 
   if(['ban', 'бан', 'забанить'].includes(cmd)) {
@@ -184,6 +195,7 @@ client.on('message', async msg => {
     if(!member.banable) return msg.reply('Я не могу его/её забанить')
     member.ban()
     msg.channel.send(`${user.tag} забанен!`)
+    msg.delete();
   }
 
   if(['report', 'репорт', 'жалоба'].includes(cmd)) {
