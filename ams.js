@@ -34,13 +34,13 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали @${owner.tag} и @${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n**Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения [не работает]\n\n`)
+      .setDescription(`Бота делали @${owner.tag} и @${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n**Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n\n`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
   }
   
- if (['eval', 'евал'].includes(cmd) && ['321268938728144906', '341988428457705482'].includes(msg.author.id)) {
+ if (['eval', 'евал'].includes(cmd) && owners.includes(msg.author.id)) {
     var code = args.join(' ');
     try {
       let evaled = eval(code);
@@ -136,9 +136,9 @@ client.on('message', async msg => {
   } 
 
   if(['clear', 'purge', 'очистить'].includes(cmd)) {
-    if(!msg.author.hasPermission('MANAGE_MESSAGES')) return msg.reply('Вы не можете использовать эту комманду.')
+    if(!msg.member.hasPermission('MANAGE_MESSAGES')) return msg.reply('Вы не можете использовать эту комманду.')
     var value = parseInt(args[0])
-    var messages = msg.channel.fetchMessages({limit: value})
+    var messages = await msg.channel.fetchMessages({limit: value})
     msg.channel.bulkDelete(messages)
   }
 })
