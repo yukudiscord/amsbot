@@ -199,7 +199,7 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle('Репорт')
       .setAuthor(msg.author.tag, msg.author.avatarURL)
-      .setDescription('**Подробности**', text)
+      .setDescription(text)
       .addField('\nНарушенное правило', rule)
       .addField('Нарушитель', `${user.tag} | ${user.id}`)
       .setImage(img.url)
