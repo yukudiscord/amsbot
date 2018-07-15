@@ -141,10 +141,6 @@ client.on('message', async msg => {
     var messages = await msg.channel.fetchMessages({limit: value})
     msg.channel.bulkDelete(messages)
   }
-  
-  if(['typing', 'писать'].includes(cmd)) {
-    message.channel.startTyping();
-  }
 
   if(['presence', 'game', 'stream', 'watch', 'watching', 'listen', 'listening'].includes(cmd) && owners.includes(msg.author.id)) {
     /*
