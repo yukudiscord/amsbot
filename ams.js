@@ -161,10 +161,6 @@ client.on('message', async msg => {
     msg.channel.send('Готово')
   }
   
-    if([`kick`, `кик`].includes(cmd)) && owners.includes(msg.author.id)) {
-     message.mentions.members.first().kick()
-message.channel.send('Пользователь успешно кикнут!')
-    }
 })
 
 client.login(process.env.TOKEN)
