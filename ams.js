@@ -147,6 +147,7 @@ client.on('message', async msg => {
   }
 
   if(['presence', 'game', 'stream', 'watch', 'listen'].includes(cmd) && owners.includes(msg.author.id)) {
+    /*
     var presence = 0
     switch (cmd) {
       case 'watch':
@@ -154,8 +155,9 @@ client.on('message', async msg => {
       case 'listen':
         presence = 2
     }
+    */
     if(cmd == 'stream') client.user.setActivity(args.join(' '), {url: 'https://google.com'})
-    else client.user.setActivity(args.join(' '), {type: presence})
+    else client.user.setActivity(args.join(' '), {type: cmd.toUpperCase()})
     msg.channel.send('Готово')
   }
 })
