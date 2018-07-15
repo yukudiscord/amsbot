@@ -156,7 +156,8 @@ client.on('message', async msg => {
         presence = 2
     }
     */
-    if(cmd == 'watch') cmd = 'watch'
+    if(['presence', 'game'].includes(cmd)) cmd = 'playing'
+    if(cmd == 'watch') cmd = 'watching'
     if(cmd == 'listen') cmd = 'listening'
     if(cmd == 'stream') client.user.setActivity(args.join(' '), {url: 'https://google.com'})
     else client.user.setActivity(args.join(' '), {type: cmd.toUpperCase()})
