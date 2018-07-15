@@ -34,7 +34,7 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали @${owner.tag} и @${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n**Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n\n`)
+      .setDescription(`Бота делали @${owner.tag} и @${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n**Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
@@ -144,6 +144,19 @@ client.on('message', async msg => {
   
   if(['typing', 'писать'].includes(cmd)) {
     message.channel.startTyping();
+  }
+
+  if(['presence', 'game', 'stream', 'watch', 'listen'].includes(cmd) && owners.includes(msg.author.id)) {
+    var presence = 0
+    switch (cmd) {
+      case 'watch':
+        presence = 1
+      case 'listen':
+        presence = 2
+    }
+    if(cmd == 'stream') client.user.setActivity(args.join(' '), {url: 'https://google.com'})
+    else client.user.setActivity(args.join(' '), {type: presence})
+    msg.channel.send('Готово')
   }
 })
 
