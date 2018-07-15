@@ -34,7 +34,7 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали @${owner.tag} и @${owner1.tag}.\n\n **Развлечения**\n  slap - ударить кого-то\n  hug - обнять кого-то\n  pet - погладить кого-то\n  lizard - увидеть ящерицу\n  kiss - поцелуй\n\n**Основные**\n  eval - выполнить\n\n`)
+      .setDescription(`Бота делали @${owner.tag} и @${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n**Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения [не работает]\n\n`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
@@ -134,6 +134,13 @@ client.on('message', async msg => {
       .setImage(data)
     msg.channel.send({embed})
   } 
+
+  if(['clear', 'purge', 'очистить'].includes(cmd)) {
+    if(!msg.author.hasPermission('MANAGE_MESSAGES')) return msg.reply('Вы не можете использовать эту комманду.')
+    var value = parseInt(args[0])
+    var messages = msg.channel.fetchMessages({limit: value})
+    msg.channel.bulkDelete(messages)
+  }
 })
 
 client.login(process.env.TOKEN)
