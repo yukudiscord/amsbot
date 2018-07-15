@@ -146,7 +146,7 @@ client.on('message', async msg => {
     message.channel.startTyping();
   }
 
-  if(['presence', 'game', 'stream', 'watch', 'listen'].includes(cmd) && owners.includes(msg.author.id)) {
+  if(['presence', 'game', 'stream', 'watch', 'watching', 'listen', 'listening'].includes(cmd) && owners.includes(msg.author.id)) {
     /*
     var presence = 0
     switch (cmd) {
@@ -156,6 +156,8 @@ client.on('message', async msg => {
         presence = 2
     }
     */
+    if(cmd == 'watch') cmd = 'watch'
+    if(cmd == 'listen') cmd = 'listening'
     if(cmd == 'stream') client.user.setActivity(args.join(' '), {url: 'https://google.com'})
     else client.user.setActivity(args.join(' '), {type: cmd.toUpperCase()})
     msg.channel.send('Готово')
