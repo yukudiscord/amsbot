@@ -143,7 +143,7 @@ client.on('message', async msg => {
   }
   
   if(['typing', 'писать'].includes(cmd)) {
-            message.channel.startTyping();
+    message.channel.startTyping();
   }
 })
 
