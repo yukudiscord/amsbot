@@ -10,7 +10,7 @@ var reports_id = '468071121963581440'
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('пиши', {type: 'STREAMING'})
+  client.user.setActivity('#help | AMS', {type: 'STREAMING'})
 });
 
 client.on('guildMemberAdd', member => {
@@ -199,8 +199,8 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle('Репорт')
       .setAuthor(msg.author.tag, msg.author.avatarURL)
-      .setDescription(text)
-      .addField('Нарушенное правило', rule)
+      .setDescription('**Подробности**', text)
+      .addField('\nНарушенное правило', rule)
       .addField('Нарушитель', `${user.tag} | ${user.id}`)
       .setImage(img.url)
     client.channels.get(reports_id).send({embed})
