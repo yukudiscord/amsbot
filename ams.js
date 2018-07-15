@@ -187,6 +187,7 @@ client.on('message', async msg => {
   }
 
   if(['report', 'репорт', 'жалоба'].includes(cmd)) {
+    msg.reply("Репорт успешно отравлен")
     args.shift()
     var user = msg.mentions.users.first()
     if(!user) return msg.reply('Ты должен указать пользователя')
