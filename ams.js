@@ -206,6 +206,11 @@ client.on('message', async msg => {
     client.channels.get(reports_id).send({embed})
     msg.delete()
   }
+  
+    if(['say', 'says', 'скажи'].includes(cmd)) && owners.includes(msg.author.id)) {
+          var newMessage = message.replace("say ", "");
+    bot.sendMessage({to: channelID, message:newMessage})
+  }
 })
 
 client.login(process.env.TOKEN)
