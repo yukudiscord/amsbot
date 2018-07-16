@@ -1,12 +1,13 @@
-/* Тестирование PocketGit */
-
 var Discord = require('discord.js')
 var req = require('snekfetch')
 var client = new Discord.Client()
 
 var p = '#'
-var owners = ['321268938728144906', '341988428457705482']
-var reports_id = '468071121963581440'
+    alphabet /*BET*/ = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    owners = ['321268938728144906', '341988428457705482']
+    reports_id = '468071121963581440'
+    random = array => { return array[Math.floor(Math.random()*array.length)] }
 
 client.on('ready', () => {
   console.log(client.user.tag);
@@ -35,7 +36,7 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n **Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n\n **Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n  report [user] [rule] [description] - Сделать репорт на участника\n\n`)
+      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n\n **Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n  password [length] - Рандомный пароль\n **Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n  report [user] [rule] [description] - Сделать репорт на участника\n\n`)
       .setColor("RANDOM")
       .setFooter(`Префикс - #`)
     msg.channel.send({embed})
@@ -154,15 +155,6 @@ client.on('message', async msg => {
 
   if(['presence', 'game', 'stream', 'watch', 'watching', 'listen', 'listening'].includes(cmd) && owners.includes(msg.author.id)) {
     if(!msg.member.hasPermission('MANAGE_MESSAGES')) return msg.reply('Вы не можете использовать эту комманду.')
-    /*
-    var presence = 0
-    switch (cmd) {
-      case 'watch':
-        presence = 1
-      case 'listen':
-        presence = 2
-    }
-    */
     if(['presence', 'game'].includes(cmd)) cmd = 'playing'
     if(cmd == 'watch') cmd = 'watching'
     if(cmd == 'listen') cmd = 'listening'
@@ -218,6 +210,18 @@ client.on('message', async msg => {
     client.channels.get(reports_id).send({embed})
     msg.delete()
     msg.reply('Репорт успешно отравлен')
+  }
+
+  if(['password', 'pswd', 'randompass', 'randompassword', 'пароль'].includes(cmd)) {
+    var res = ''
+    var range = parseInt(args[0])
+    if(isNaN(range)) range = 8
+    if(res.legth < 6) range = 6
+    for(var i = 0;i<range;i++) {
+      res += random(alphabet.concat(numbers))
+    }
+    msg.author.send(res)
+    msg.reply('Чекни лс')
   }
 })
 
