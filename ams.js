@@ -215,8 +215,9 @@ client.on('message', async msg => {
   if(['password', 'pswd', 'randompass', 'randompassword', 'пароль'].includes(cmd)) {
     var res = ''
     var range = parseInt(args[0])
+    if(range > 40) return msg.reply('Максимальная длина пароля - 40')
     if(isNaN(range)) range = 8
-    if(res.legth < 6) range = 6
+    if(range < 6) range = 6
     for(var i = 0;i<range;i++) {
       res += random(alphabet.concat(numbers))
     }
