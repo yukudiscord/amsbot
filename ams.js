@@ -264,6 +264,14 @@ client.on('message', async msg => {
       msg.reply('Я не могу открыть страницу')
     }
   }
+
+  if(['color', 'цвет'].includes(cmd)) {
+    var color = args[0]
+    if(!color) return msg.reply('Ты должен указать цвет')
+    var role = await msg.guild.createRole({name: color, color})
+    msg.member.addRole(role)
+    msg.channel.send('Готово!')
+  }
 })
 
 client.login(process.env.TOKEN)
