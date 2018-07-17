@@ -42,9 +42,9 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n  password [length] - Рандомный пароль\n\n **Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n\n **Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n  report [user] [rule] [description] - Сделать репорт на участника\n\n`)
-      .setColor("RANDOM")
+      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n  password [length] - Рандомный пароль\n\n **Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n\n **Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n  report [user] [rule] [description] - Сделать репорт на участника\n  check - Проверить сайт\n\n`)
       .setFooter(`Префикс - #`)
+      .setColor('FFFFFF')
     msg.channel.send({embed})
     msg.delete();
   }
@@ -77,7 +77,7 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle('Пинг')
       .setDescription(`Пинг: ${Math.round(client.ping)}ms`)    
-      .setColor("RANDOM")
+      .setColor('FFFFFF')
     msg.channel.send({embed})
     msg.delete();
   }
@@ -92,6 +92,7 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle(`Ты обнял ${user}`)
       .setImage(data)
+      .setColor('FFFFFF')
     msg.channel.send({embed})
     msg.delete();
   }
@@ -106,6 +107,7 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle(`Ты ударил ${user}`)
       .setImage(data)
+      .setColor('FFFFFF')
     msg.channel.send({embed})
     msg.delete();
   }
@@ -120,6 +122,7 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle(`Ты погладил ${user}`)
       .setImage(data)
+      .setColor('FFFFFF')
     msg.channel.send({embed})
     msg.delete();
   } 
@@ -133,6 +136,7 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle(`Ты увидел ${user}`)
       .setImage(data)
+      .setColor('FFFFFF')
     msg.channel.send({embed})
     msg.delete();
   } 
@@ -147,6 +151,7 @@ client.on('message', async msg => {
     var embed = new Discord.RichEmbed()
       .setTitle(`Ты поцеловал ${user}`)
       .setImage(data)
+      .setColor('FFFFFF')
     msg.channel.send({embed})
     msg.delete();
   } 
@@ -213,6 +218,7 @@ client.on('message', async msg => {
       .addField('\nНарушенное правило', rule)
       .addField('Нарушитель', `${user.tag} | ${user.id}`)
       .setImage(img.url)
+      .setColor('FFFFFF')
     client.channels.get(reports_id).send({embed})
     msg.delete()
     msg.reply('Репорт успешно отравлен')
