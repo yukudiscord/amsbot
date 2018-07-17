@@ -268,7 +268,7 @@ client.on('message', async msg => {
     var color = args[0]
     if(!color) return msg.reply('Ты должен указать цвет')
     msg.member.roles.forEach(role => {
-      if(role.name.startsWith('🎨 ')) member.removeRole(role)
+      if(role.name.startsWith('🎨 ')) msg.member.removeRole(role)
     })
     var role = msg.guild.roles.find('name', color)
     if(role) {}
