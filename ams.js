@@ -269,7 +269,7 @@ client.on('message', async msg => {
     if(!color) return msg.reply('Ты должен указать цвет')
     var role = msg.guild.roles.find('name', color)
     if(role) {}
-    else role = await msg.guild.createRole({name: 🎨 color, color})
+    else role = await msg.guild.createRole({name: color, color})
     msg.member.addRole(role)
     msg.channel.send('Готово!')
   }
