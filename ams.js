@@ -1,5 +1,6 @@
 var Discord = require('discord.js')
 var req = require('snekfetch')
+var request = require('request')
 var client = new Discord.Client()
 
 var p = '#'
@@ -7,7 +8,12 @@ var p = '#'
     numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
     owners = ['321268938728144906', '341988428457705482']
     reports_id = '468071121963581440'
+    loggers = {
+      'iplogger.com': ['iplogger.com', 'iplogger.org', 'iplogger.ru', '2no.co', 'yip.su'],
+      'grabify.link': ['grabify.link', 'starbucksisbadforyou.com', 'bmwforum.co', 'leancoding.co', 'quickmessage.io', 'spottyfly.com', 'spötify.com', 'stopify.co', 'yoütu.be', 'yoütübe.co', 'yoütübe.com', 'xda-developers.io', 'starbucksiswrong.com', 'starbucksisbadforyou.com', 'bucks.as', 'discörd.com', 'minecräft.com', 'cyberh1.xyz', 'discördapp.com', 'freegiftcards.co', 'disçordapp.com', 'iany.pl', 'my-alts.eu', 'l-imgur.pl', 'exec-true.eu', 'tigercore.eu']
+    }
     random = array => { return array[Math.floor(Math.random()*array.length)] }
+    sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 client.on('ready', () => {
   console.log(client.user.tag);
@@ -223,6 +229,34 @@ client.on('message', async msg => {
     }
     msg.author.send(res)
     msg.reply('Чекни лс')
+  }
+
+  if(['check'].includes(cmd)) {
+    var url = args[0]
+    if(!url) url = 'https://google.com'
+    try {
+      var warn = 'Это не логгер'
+      var page = await request.get(url)
+      for(var i=0;!page._ended;i++) { // когда ты сверхразум
+        await sleep(100)
+      }
+      await sleep(2000)
+      Object.keys(loggers).forEach(log => {
+        console.log(page)
+        if(loggers[log].includes(page.host)) {
+          warn = `Замечен логгер от сайта ${log}`
+        }
+      })
+      if(page.host.endsWith('ngrok.io')) warn = 'На этом сайте может быть что угодно'
+      if(page.host.endsWith('serveo.net')) warn = 'На этом сайте может быть что угодно'
+      if(page.host.endsWith('herokuapp.com')) warn = 'Это бесплатный хостинг, тут может быть что угодно'
+      if(page.host.endsWith('000webhostapp.com')) warn = 'Это бесплатный хостинг, тут может быть что угодно'
+      if(page.host.endsWith('epizy.com')) warn = 'Это бесплатный хостинг, тут может быть что угодно'
+      if(page.host.endsWith('rf.gd')) warn = 'Это бесплатный хостинг, тут может быть что угодно'
+      msg.channel.send(warn)
+    } catch(e) {
+      msg.reply('Я не могу открыть страницу')
+    }
   }
 })
 
