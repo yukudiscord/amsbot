@@ -267,9 +267,12 @@ client.on('message', async msg => {
   if(['color', 'цвет'].includes(cmd)) {
     var color = args[0]
     if(!color) return msg.reply('Ты должен указать цвет')
+    msg.member.roles.forEach(role => {
+      if(role.name.startsWith('✨ ')) member.removeRole(role)
+    })
     var role = msg.guild.roles.find('name', color)
     if(role) {}
-    else role = await msg.guild.createRole({name: color, color})
+    else role = await msg.guild.createRole({name: `✨ ${color}`, color})
     msg.member.addRole(role)
     msg.channel.send('Готово!')
   }
