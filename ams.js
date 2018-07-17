@@ -17,7 +17,7 @@ var p = '#'
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('#help | AMS', {type: 'STREAMING'})
+  client.user.setActivity('#help', {type: 'STREAMING'})
 });
 
 client.on('guildMemberAdd', member => {
