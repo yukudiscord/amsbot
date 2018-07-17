@@ -7,7 +7,6 @@ var p = '#'
     alphabet /*BET*/ = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
     owners = ['321268938728144906', '341988428457705482']
-    reports_id = '468071121963581440'
     loggers = {
       'iplogger.com': ['iplogger.com', 'iplogger.org', 'iplogger.ru', '2no.co', 'yip.su'],
       'grabify.link': ['grabify.link', 'starbucksisbadforyou.com', 'bmwforum.co', 'leancoding.co', 'quickmessage.io', 'spottyfly.com', 'spötify.com', 'stopify.co', 'yoütu.be', 'yoütübe.co', 'yoütübe.com', 'xda-developers.io', 'starbucksiswrong.com', 'starbucksisbadforyou.com', 'bucks.as', 'discörd.com', 'minecräft.com', 'cyberh1.xyz', 'discördapp.com', 'freegiftcards.co', 'disçordapp.com', 'iany.pl', 'my-alts.eu', 'l-imgur.pl', 'exec-true.eu', 'tigercore.eu']
@@ -219,7 +218,7 @@ client.on('message', async msg => {
       .addField('Нарушитель', `${user.tag} | ${user.id}`)
       .setImage(img.url)
       .setColor('FFFFFF')
-    client.channels.get(reports_id).send({embed})
+    client.channels.find('name', 'reports').send({embed})
     msg.delete()
     msg.reply('Репорт успешно отравлен')
   }
@@ -268,7 +267,9 @@ client.on('message', async msg => {
   if(['color', 'цвет'].includes(cmd)) {
     var color = args[0]
     if(!color) return msg.reply('Ты должен указать цвет')
-    var role = await msg.guild.createRole({name: color, color})
+    var role = msg.guild.roles.find('name', color)
+    if(role) {}
+    else role = await msg.guild.createRole({name: color, color})
     msg.member.addRole(role)
     msg.channel.send('Готово!')
   }
