@@ -206,7 +206,7 @@ client.on('message', async msg => {
   if(['report', 'репорт', 'жалоба'].includes(cmd)) {
     args.shift()
     var user = msg.mentions.users.first()
-    if(!user) return msg.reply('Ты должен указать пользователя')
+    if(!user) return msg.reply(`${client.ams.get(ams.error)} Ты должен указать пользователя`)
     var rule = args.shift()
     if(!rule) return msg.reply('Ты должен указать правило')
     var text = args.join(' ')
