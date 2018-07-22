@@ -13,9 +13,6 @@ var p = '#'
     }
     random = array => { return array[Math.floor(Math.random()*array.length)] }
     sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-var ams = {
-    error: '470709518008057887'
-    };
 
 client.on('ready', () => {
   console.log(client.user.tag);
@@ -206,7 +203,7 @@ client.on('message', async msg => {
   if(['report', 'репорт', 'жалоба'].includes(cmd)) {
     args.shift()
     var user = msg.mentions.users.first()
-    if(!user) return msg.reply(`${client.ams.get(ams.error)} Ты должен указать пользователя`)
+    if(!user) return msg.reply('Ты должен указать пользователя')
     var rule = args.shift()
     if(!rule) return msg.reply('Ты должен указать правило')
     var text = args.join(' ')
@@ -271,7 +268,7 @@ client.on('message', async msg => {
 
   if(['color', 'цвет'].includes(cmd)) {
     var color = args[0]
-    if(!color) return msg.reply(`${client.ams.get(ams.error)} Ты должен указать цвет`)
+    if(!color) return msg.reply('Ты должен указать цвет')
     msg.member.roles.forEach(role => {
       if(role.name.startsWith('🎨 ')) msg.member.removeRole(role)
     })
