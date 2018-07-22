@@ -228,6 +228,7 @@ client.on('message', async msg => {
     var range = parseInt(args[0])
     if(range > 40) return msg.reply('Максимальная длина пароля - 40')
     if(range < 6) return msg.reply('Минимальная длина пароля - 6')
+    if(range = 0) return msg.reply('Я не считаю 0 числом')
     if(isNaN(range)) range = 8
     if(range < 6) range = 6
     for(var i = 0;i<range;i++) {
