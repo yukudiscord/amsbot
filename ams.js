@@ -21,8 +21,10 @@ var ams = {
 
 client.on('ready', () => {
   console.log(client.user.tag);
-  client.user.setActivity('#help', {type: 'STREAMING'})
-});
+  client.user.setActivity('перезагрузка..', {type: 'STREAMING'})
+            setTimeout(() => {
+            client.user.setActivity('#help', {type: 'STREAMING'})
+        }, 15000);
 
 client.on('guildMemberAdd', member => {
   member.addRole('467526203713126410')
