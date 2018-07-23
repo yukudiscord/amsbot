@@ -15,7 +15,7 @@ var p = '#'
     sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 var ams = {
-    error: '470709404946399252'
+    error: '470709404946399252',
     error2: '470955110864912400'
     };
 
