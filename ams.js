@@ -282,22 +282,6 @@ client.on('message', async msg => {
     else role = await msg.guild.createRole({name: `🎨 ${color}`, color})
     msg.member.addRole(role)
     msg.channel.send('Готово!')
-  }
-    
-  if(['ava', 'av', 'avatar', 'аватар', 'аватарка'].includes(cmd)) {
-      let member = message.mentions.members.first();
-    if (!member)
-    var embed = new Discord.RichEmbed
-    .setTitle("Ошибка")
-    .setDescription("Участник, у которого вы хотите взять аватарку не находится на сервере")
-    return message.author.send({embed})
-}
-     var embed = new Discord.RichEmbed
-   .setTitle(`Аватарка ${member.user.tag}`)
-   .setDescription(`${member.user.avatarURL}`)
-   .setColor("RANDOM")
- msg.channel.send({embed})
- message.delete();
  }
 })
 
