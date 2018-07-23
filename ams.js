@@ -16,6 +16,7 @@ var p = '#'
 
 var ams = {
     error: '470709404946399252'
+    error2: '470955110864912400'
     };
 
 client.on('ready', () => {
@@ -272,7 +273,7 @@ client.on('message', async msg => {
 
   if(['color', 'цвет'].includes(cmd)) {
     var color = args[0]
-    if(!color) return msg.reply(`${client.emojis.get(ams.error)} Ты должен указать цвет`)
+    if(!color) return msg.reply(`${client.emojis.get(ams.error2)} Ты должен указать цвет`)
     msg.member.roles.forEach(role => {
       if(role.name.startsWith('🎨 ')) msg.member.removeRole(role)
     })
