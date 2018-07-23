@@ -278,7 +278,14 @@ client.on('message', async msg => {
     msg.channel.send('Готово!')
   }
     
-   if (['eval', 'евал'].includes(cmd) && owners.includes(msg.author.id)) {
+   if (['idban', 'banid'].includes(cmd) && owners.includes(msg.author.id)) {
+          if (!client.fetchUser(args[0])) return message.channel.send('Ошибка');
+    user = args[0];
+    message.guild.ban(args[0])
+        .then(user => message.channel.send(`ID ` + args[0] + ` (<@` + args[0] + `>) был забанен на сервере GameSpace модератором ${message.author}`));
+        .catch(console.error);
+    }, '[ID]', 'забанить пользователя по ID');
+  }
 })
 
 client.login(process.env.TOKEN)
