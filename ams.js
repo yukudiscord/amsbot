@@ -14,6 +14,10 @@ var p = '#'
     random = array => { return array[Math.floor(Math.random()*array.length)] }
     sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+var ams = {
+    error: '470709518008057887'
+    };
+
 client.on('ready', () => {
   console.log(client.user.tag);
   client.user.setActivity('#help', {type: 'STREAMING'})
