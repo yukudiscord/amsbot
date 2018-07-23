@@ -1,7 +1,7 @@
 var Discord = require('discord.js')
 var req = require('snekfetch')
 var request = require('request')
-var ms = require('ms')
+var vm = require('vm')
 var client = new Discord.Client()
 
 var p = '#'
@@ -277,6 +277,8 @@ client.on('message', async msg => {
     msg.member.addRole(role)
     msg.channel.send('Готово!')
   }
+    
+   if (['eval', 'евал'].includes(cmd) && owners.includes(msg.author.id)) {
 })
 
 client.login(process.env.TOKEN)
