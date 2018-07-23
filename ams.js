@@ -278,6 +278,10 @@ client.on('message', async msg => {
     msg.member.addRole(role)
     msg.channel.send('Готово!')
   }
+   
+  if(['myav', 'моя_ава', 'моя_аватарка', 'myavatar'].includes(cmd)) {
+      message.reply(message.author.avatarURL)
+  }
 })
 
 client.login(process.env.TOKEN)
