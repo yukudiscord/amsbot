@@ -3,7 +3,6 @@
 var Discord = require('discord.js')
 var req = require('snekfetch')
 var request = require('request')
-var getImageColors = require('get-image-colors')
 var client = new Discord.Client()
 
 var p = '#'
