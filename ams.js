@@ -3,6 +3,7 @@
 var Discord = require('discord.js')
 var req = require('snekfetch')
 var request = require('request')
+var getImageColors = require('get-image-colors')
 var client = new Discord.Client()
 
 var p = '#'
@@ -282,6 +283,18 @@ client.on('message', async msg => {
   if(['say', 'скажи'].includes(cmd) && owners.includes(msg.author.id)) {
     msg.delete()
     msg.channel.send(args.join(' '))
+      
+  if(['av', 'avatar'].includes(cmd)) {
+              message.delete();
+        let user = message.mentions.users.first();
+        if (!user) user = message.author;
+        getImageColors(user.avatarURL).then(color => {
+            let c = color.map(col => col.hex());
+        var embed = new Discord.RichEmbed()
+            .setDescription(`Аватар ${user}`)
+            .setColor(c[0])
+            .setImage(user.avatarURL);
+        message.channel.send({embed});
   }
 })
 
