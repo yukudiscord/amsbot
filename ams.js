@@ -219,7 +219,7 @@ client.on('message', async msg => {
       .setImage(img.url)
       .setColor('FFFFFF')
     client.channels.find('name', 'reports').send({embed})
-    msg.delete()
+    setTimeout(msg.delete, 1000)
     msg.reply('Репорт успешно отравлен')
   }
 
@@ -268,13 +268,21 @@ client.on('message', async msg => {
     var color = args[0]
     if(!color) return msg.reply('Ты должен указать цвет')
     msg.member.roles.forEach(role => {
-      if(role.name.startsWith('🎨 ')) msg.member.removeRole(role)
+      if(role.name.startsWith('🎨 ')) {
+        if(role.members.size == 1) role.delete()
+        else msg.member.removeRole(role)
+      }
     })
     var role = msg.guild.roles.find('name', color)
     if(role) {}
     else role = await msg.guild.createRole({name: `🎨 ${color}`, color})
     msg.member.addRole(role)
     msg.channel.send('Готово!')
+  }
+
+  if(['say', 'скажи'].includes(cmd) && owners.includes(msg.author.id)) {
+    msg.delete()
+    msg.channel.send(args.join(' '))
   }
 })
 
