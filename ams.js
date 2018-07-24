@@ -1,3 +1,5 @@
+/* Request fix */ require('events').EventEmitter.prototype._maxListeners = 100
+
 var Discord = require('discord.js')
 var req = require('snekfetch')
 var request = require('request')
@@ -41,7 +43,7 @@ client.on('message', async msg => {
     var owner1 = await client.fetchUser('341988428457705482')
     var embed = new Discord.RichEmbed()
       .setTitle(`Вот ваша помощь, ${msg.author.tag}.`)
-      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pet - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n  password [length] - Рандомный пароль\n\n **Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n\n **Основные**\n  eval - Выполнить код\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота\n  report [участник] [нарушенное правило] [описание] [ссылка на скриншот] - Сделать репорт на участника\n  check - Проверить сайт\n  color [#hex-code цвета] - создать роль с цветом для вас\n\n`)
+      .setDescription(`Бота делали ${owner.tag} и ${owner1.tag}.\n\n^ - Только для разработчиков бота\n **Развлечения**\n  slap - Ударить кого-то\n  hug - Обнять кого-то\n  pat - Погладить кого-то\n  lizard - Увидеть ящерицу\n  kiss - Поцелуй\n  password [length] - Рандомный пароль\n\n **Модерация**\n  kick - Кикнуть пользователя\n  ban - Забанить пользователя\n\n **Основные**\n  eval - Выполнить код (^)\n  ping - Проверить пинг бота\n  clear - Очистить сообщения\n  presence, game, stream, watch, listen - Изменить presence бота (^)\n  report [участник] [нарушенное правило] [описание] (добавить скриншот) - Сделать репорт на участника\n  check - Проверить сайт\n  color [#hex-code цвета] - создать роль с цветом для вас\n  say - Написать от имени бота (^)\n\n`)
       .setFooter(`Префикс - #`)
       .setColor('FFFFFF')
     msg.channel.send({embed})
@@ -219,8 +221,9 @@ client.on('message', async msg => {
       .setImage(img.url)
       .setColor('FFFFFF')
     client.channels.find('name', 'reports').send({embed})
-    setTimeout(msg.delete, 1000)
     msg.reply('Репорт успешно отравлен')
+    sleep(1000)
+    msg.delete()
   }
 
   if(['password', 'pswd', 'randompass', 'randompassword', 'пароль'].includes(cmd)) {
@@ -241,24 +244,20 @@ client.on('message', async msg => {
     if(!url) url = 'https://google.com'
     try {
       var warn = 'Это не логгер'
-      var page = await request.get(url)
-      for(var i=0;!page._ended;i++) { // когда ты сверхразум
-        await sleep(100)
-      }
-      await sleep(2000)
-      Object.keys(loggers).forEach(log => {
-        console.log(page)
-        if(loggers[log].includes(page.host)) {
-          warn = `Замечен логгер от сайта ${log}`
-        }
+      request.get({url, followAllRedirects: true}, (_1, page, _2) => {
+        Object.keys(loggers).forEach(log => {
+          if(loggers[log].includes(page.host)) {
+            warn = `Замечен логгер от сайта ${log}`
+          }
+        })
+        if(page.host.endsWith('.ngrok.io')) warn = 'На этом сайте может быть что угодно'
+        if(page.host.endsWith('.serveo.net')) warn = 'На этом сайте может быть что угодно'
+        if(page.host.endsWith('.herokuapp.com')) warn = 'Этот сайт на бесплатном хостинге, тут может быть что угодно'
+        if(page.host.endsWith('.000webhostapp.com')) warn = 'Этот сайт на бесплатном хостинге, тут может быть что угодно'
+        if(page.host.endsWith('.epizy.com')) warn = 'Этот сайт на бесплатном хостинге, тут может быть что угодно'
+        if(page.host.endsWith('.rf.gd')) warn = 'Этот сайт на бесплатном хостинге, тут может быть что угодно'
+        msg.channel.send(warn)
       })
-      if(page.host.endsWith('ngrok.io')) warn = 'На этом сайте может быть что угодно'
-      if(page.host.endsWith('serveo.net')) warn = 'На этом сайте может быть что угодно'
-      if(page.host.endsWith('herokuapp.com')) warn = 'Это бесплатный хостинг, тут может быть что угодно'
-      if(page.host.endsWith('000webhostapp.com')) warn = 'Это бесплатный хостинг, тут может быть что угодно'
-      if(page.host.endsWith('epizy.com')) warn = 'Это бесплатный хостинг, тут может быть что угодно'
-      if(page.host.endsWith('rf.gd')) warn = 'Это бесплатный хостинг, тут может быть что угодно'
-      msg.channel.send(warn)
     } catch(e) {
       msg.reply('Я не могу открыть страницу')
     }
