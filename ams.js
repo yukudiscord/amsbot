@@ -3,7 +3,10 @@ var client = new Discord.Client()
 
 require('events').EventEmitter.prototype._maxListeners = 100
 client.p = '#'
-client.gaypride = '471751443611910155'
+// эмодзи
+client.gaypride = '471751443611910155',
+client.info = '471771424508346368'
+// конец эмодзи
 client.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 client.owners = ['321268938728144906', '341988428457705482']
 client.loggers = {
