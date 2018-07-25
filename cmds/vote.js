@@ -7,8 +7,7 @@ var embed = new Discord.RichEmbed()
 .setDescription(vote)
 .setColor('RANDOM')
 .setFooter('Poll');
-client.fetchwebhook('471794934354018306, 'process.env.WEBHOOK_ID').then(webhook -> {
-      webhook.send('', {username: nick, avatarURL: msg.author.avatarURL, embeds:  [embed]}).catch(console.error);
+client.fetchwebhook('471794934354018306, 'process.env.WEBHOOK_ID')
 await msg.react('${client.emojis.get(client.yes)}')
 await msg.react(client.emojis.get(client.no))
 }
