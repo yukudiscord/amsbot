@@ -1,4 +1,6 @@
-  var code = args.join(' ');
+  exports.info = {description: 'Выполнить', required: 'BOT_OWNERS'}
+exports.run = async (client, msg, args) => {
+var code = args.join(' ');
     try {
       let evaled = eval(code);
       if (!code) {
