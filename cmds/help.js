@@ -5,7 +5,11 @@ exports.run = async (client, msg, args) => {
   if(cmd) {
     try {
       var r = require(`./${cmd}.js`)
-      msg.channel.send(`${cmd} - **${r.info.description}**\nНеобходимо право: __${r.info.required}__`)
+      var embed = new client.RichEmbed()
+        .setTitle('Помощь')
+        .setDescription(`${cmd} - **${r.info.description}**\nНеобходимо право: __${r.info.required}__`)
+        .setColor('FFFFFF')
+      msg.channel.send({embed})
     } catch(e) {
       msg.reply('Такой комманды нету!')
     }
@@ -24,6 +28,10 @@ exports.run = async (client, msg, args) => {
       }
       res += `${cmd.replace('.js', '')} - **${desc}**\n`
     })
-    msg.channel.send(res)
+    var embed = new client.RichEmbed()
+      .setTitle('Помощь')
+      .setDescription(res)
+      .setColor('FFFFFF')
+    msg.channel.send({embed})
   }
 }
