@@ -1,0 +1,9 @@
+ var vote = args.join(" ");
+var embed = new Discord.RichEmbed()
+.setTitle("Голосование")
+.setDescription(vote)
+.setColor('RANDOM')
+.setFooter('Poll');
+msg.channel.send({embed});
+await msg.react(${client.emojis.get(client.yes)
+await msg.react(${client.emojis.get(client.no)
