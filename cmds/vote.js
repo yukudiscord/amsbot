@@ -9,5 +9,5 @@ var embed = new Discord.RichEmbed()
 .setFooter('Poll');
 client.fetchwebhook('471794934354018306, 'process.env.WEBHOOK_ID')
 await msg.react('${client.emojis.get(client.yes)}')
-await msg.react(client.emojis.get(client.no))
+await msg.react(client.emojis.get(client.nonono))
 }
