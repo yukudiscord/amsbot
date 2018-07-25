@@ -7,6 +7,6 @@ var embed = new Discord.RichEmbed()
 .setDescription(vote)
 .setColor('RANDOM')
 .setFooter('Poll');
-msg.channel.send({embed});
+msg.guild.channels.find('name', 'votes').send({embed})
 await msg.react(${client.emojis.get(client.yes)
 await msg.react(${client.emojis.get(client.no)
