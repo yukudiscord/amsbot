@@ -10,3 +10,4 @@ var embed = new Discord.RichEmbed()
 msg.guild.channels.find('name', 'votes').send({embed})
 await msg.react(${client.emojis.get(client.yes)
 await msg.react(${client.emojis.get(client.no)
+}
