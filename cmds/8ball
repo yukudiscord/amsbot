@@ -1,0 +1,26 @@
+ if (message.content === "!8ball") {
+    	var repliki = ["Возможно",
+										"Я не уверен",
+										"Скорее всего - да",
+										"Скорее всего - нет",
+										"Это нереально",
+										"Да, конечно",
+										"Нет, конечно",
+										"Ты ебобо?",
+										"Я не знаю",
+										"Скорее всего - да, чем нет, но может и нет - больше, чем да",
+										"Очень много времени занимает обдумка твоего вопроса",
+                    "Возможно, но нет",
+										"Ask again later",
+										"Better not tell you now",
+										"Cannot predict now",
+										"Concentrate and ask again",
+										"Don't count on it",
+										"My reply is no",
+										"My sources say no",
+										"Outlook not so good",
+										"Very doubtful"];
+
+			var result = Math.floor((Math.random() * repliki.length) + 0);
+			bot.reply(message, sayings[result]);
+    }
