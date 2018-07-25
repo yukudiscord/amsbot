@@ -1,3 +1,6 @@
+ exports.info = {description: 'Голосование', required: 'BOT_OWNERS'}
+exports.run = async (client, msg, args) => {
+
  var vote = args.join(" ");
 var embed = new Discord.RichEmbed()
 .setTitle("Голосование")
