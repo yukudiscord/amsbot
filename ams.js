@@ -2,7 +2,7 @@ var Discord = require('discord.js')
 var client = new Discord.Client()
 
 require('events').EventEmitter.prototype._maxListeners = 100
-client.p = '#$'
+client.p = '#'
 client.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 client.owners = ['321268938728144906', '341988428457705482']
 client.loggers = {
