@@ -20,10 +20,12 @@ exports.run = async (client, msg, args) => {
         if(!client.owners.includes(msg.author.id)) return
       }
       else {
-        if(!msg.member.hasPermission(perm)) return
+        if(!msg.member.hasPermission(perm)) 
       }
-      res += `${cmd.replace('.js', '')} - **${desc}**\n`
+      var embed = new Discord.RichEmbed
+      .setTitle("Команды")
+      .setDescription(`${cmd.replace('.js', '')} - **${desc}**\n`)
     })
-    msg.channel.send(res)
+    msg.channel.send({embed})
   }
 }
