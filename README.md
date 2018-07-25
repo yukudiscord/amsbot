@@ -1,2 +1,2 @@
 # AmsBot
-Бот созданный для сервера AMS
+Бот созданный для сервера [AMS](https://discord.gg/mMfPv2U)
