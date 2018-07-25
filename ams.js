@@ -5,7 +5,9 @@ require('events').EventEmitter.prototype._maxListeners = 100
 client.p = '#'
 // эмодзи
 client.gaypride = '471751443611910155',
-client.info = '471771424508346368'
+client.info = '471771424508346368',
+client.yes = '462656084419674112',
+client.no = '462656084109164544'
 // конец эмодзи
 client.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 client.owners = ['321268938728144906', '341988428457705482']
