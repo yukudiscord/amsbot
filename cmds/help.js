@@ -7,7 +7,7 @@ exports.run = async (client, msg, args) => {
       var r = require(`./${cmd}.js`)
       var embed = new client.RichEmbed()
         .setTitle('Помощь')
-        .setDescription(`${cmd} - **${r.info.description}**\nНеобходимо право: __${r.info.required}__`)
+        .setDescription(`${client.emojis.get(client.info)} ${cmd} - **${r.info.description}**\nНеобходимо право: __${r.info.required}__`)
         .setColor('FFFFFF')
       msg.channel.send({embed})
     } catch(e) {
