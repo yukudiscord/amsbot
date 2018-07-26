@@ -5,10 +5,8 @@ exports.run = async (client, msg, args) => {
     .setDescription(args.join(" "))
     .setColor('RANDOM')
     .setFooter('AMS');
-  client.fetchWebhook(471967122369806347, process.env.WEBHOOK_TOKEN).then(webhook => {
-    webhook.send({username: nick, avatarURL: msg.author.avatarURL, embeds:  [embed]}).catch(console.error);
-  }).catch(console.error);
-  await msg.react(`${client.emojis.get(client.yes)}`)
-  await msg.react(`${client.emojis.get(client.no)}`)
+  msg.guild.channels.find('name', 'votes').send({embed})
+  await msg.react(':white_check_mark:')
+  await msg.react(':x:')
   msg.channel.send('**Голосование участника ${msg.author} отправлено**')
 }
