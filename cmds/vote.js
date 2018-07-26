@@ -13,5 +13,4 @@ await msg.react('${client.emojis.get(client.yes)}')
 await msg.react('${client.emojis.get(client.no)}')
  msg.channel.send('**Голосование участника <@${msg.author.id}> отправлено**');
  msg.delete();
- }
 }
