@@ -11,5 +11,5 @@ client.fetchwebhook('471794934354018306, 'process.env.WEBHOOK_ID').then(webhook 
  }).catch(console.error);
 await msg.react('${client.emojis.get(client.yes)}')
 await msg.react('${client.emojis.get(client.no)}')
- msg.channel.send('**Голосование участника <@${msg.author.id}> отправлено**');
+ msg.channel.send('**Голосование участника ${msg.author} отправлено**')
 }
