@@ -5,8 +5,9 @@ exports.run = async (client, msg, args) => {
     .setDescription(args.join(" "))
     .setColor('RANDOM')
     .setFooter('AMS');
-  msg.guild.channels.find('name', 'votes').send({embed})
   await msg.react('✅')
   await msg.react('❌')
+  msg.guild.channels.find('name', 'votes').send({embed})
+  await msg.react('✅')
   return msg.reply('**Голосование участника ${msg.author} отправлено**')
 }
