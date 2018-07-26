@@ -1,6 +1,6 @@
 exports.info = {description: 'Голосование', required: 'SEND_MESSAGES'}
 exports.run = async (client, msg, args) => {
-    var embed = new Discord.RichEmbed()
+    var embed = new client.RichEmbed()
     .setTitle("Голосование")
     .setDescription(args.join(" "))
     .setColor('RANDOM')
