@@ -1,3 +1,5 @@
+exports.info = {description: 'Информация о пользователе', required: 'SEND_MESSAGES'}
+exports.run = async (client, msg, args) => {
   var u1 = msg.mentions.users.first()
   var embed = new client.RichEmbed()
   .setTitle("Информация о " + '<@${u1.tag}>')
