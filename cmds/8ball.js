@@ -7,11 +7,6 @@ var hooysasat = ['Возможно', 'Я не уверен', 'Скорее вс�
 exports.info = {description: '~~Это вам не ask.fm~~', required: 'SEND_MESSAGES'}
 exports.run = (client, msg, args) => {
   if(!args.join(' ')) return msg.reply('Я не умею угадывать твои мысли')
-  var result = Math.floor((Math.random() * hooysasat.length));
-                 
-  var embed = new Discord.RichEmbed()
-  .setTitle("8шар - рандомный ответ")
-  .setDescription('Мой ответ - ' + hooysasat[result]);)
-  .setColor("RANDOM")
-  msg.channel.send({embed})
+  var result = Math.floor((Math.random() * replies.length));
+  msg.reply(replies[result]);
 }
