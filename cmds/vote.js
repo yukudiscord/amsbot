@@ -12,5 +12,4 @@ client.fetchwebhook('471794934354018306, 'process.env.WEBHOOK_ID').then(webhook 
 await msg.react('${client.emojis.get(client.yes)}')
 await msg.react('${client.emojis.get(client.no)}')
  msg.channel.send('**Голосование участника <@${msg.author.id}> отправлено**');
- msg.delete();
 }
