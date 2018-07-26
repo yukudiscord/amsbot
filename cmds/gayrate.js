@@ -10,7 +10,7 @@ exports.info = {description: 'Насколько юзер гей? :thinking:', r
 exports.run = async (client, msg, args) => {
   var u = msg.mentions.users.first()
   if(!u) u = msg.author
-  var rated = reverse(u.id)%80
+  var rated = reverse(u.id)%100
   var embed = new client.RichEmbed()
     .setTitle('Измеритель Гейства 3000')
     .setDescription(`<@${u.id}> на ${rated}% гей ${client.emojis.get(client.gaypride)}`)
