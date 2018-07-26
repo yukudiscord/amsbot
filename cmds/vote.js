@@ -11,4 +11,5 @@ exports.run = async (client, msg, args) => {
   await sent.react('✅')
   return msg.reply('**Голосование успешно начато**')
         })
+}
  
