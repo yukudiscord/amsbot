@@ -15,3 +15,4 @@ exports.run = async (client, msg, args) => {
   msg.channel.send({embed})
 
   if(!u1) return msg.reply("Вы не указали пользователя.")
+  }
