@@ -8,5 +8,5 @@ exports.run = async (client, msg, args) => {
   msg.guild.channels.find('name', 'votes').send({embed})
   await msg.react('✅')
   await msg.react('❌')
-  msg.channel.send('**Голосование участника ${msg.author} отправлено**')
+  return ('**Голосование участника ${msg.author} отправлено**')
 }
