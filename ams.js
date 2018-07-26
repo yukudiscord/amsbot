@@ -4,9 +4,9 @@ var client = new Discord.Client()
 require('events').EventEmitter.prototype._maxListeners = 100
 client.p = '#'
 // эмодзи
-client.gaypride = '471751443611910155',
-client.info = '471771424508346368',
-client.yes = '462656084419674112',
+client.gaypride = '471751443611910155'
+client.info = '471771424508346368'
+client.yes = '462656084419674112'
 client.no = '462656084109164544'
 client.ball = '471976755733856266'
 // конец эмодзи
