@@ -5,7 +5,7 @@ var replies = ['Возможно', 'Я не уверен', 'Скорее все�
 
 exports.info = {description: '~~Это вам не ask.fm~~', required: 'SEND_MESSAGES'}
 exports.run = (client, msg, args) => {
-  if(!args.join(' ')) return msg.reply('Я не умею угадывать твои мысли')
+  if(!args.join(' ')) return msg.reply(' ${client.emojis.get(client.ball)} Я не умею угадывать твои мысли')
   var result = Math.floor((Math.random() * replies.length));
   msg.reply(replies[result]);
 }
