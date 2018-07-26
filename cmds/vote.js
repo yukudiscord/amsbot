@@ -1,13 +1,14 @@
 exports.info = {description: 'Голосование', required: 'SEND_MESSAGES'}
 exports.run = async (client, msg, args) => {
-  var embed = new client.RichEmbed()
+    var embed = new Discord.RichEmbed()
     .setTitle("Голосование")
     .setDescription(args.join(" "))
     .setColor('RANDOM')
     .setFooter('AMS');
-  await msg.react('✅')
-  await msg.react('❌')
-  msg.guild.channels.find('name', 'votes').send({embed})
-  await msg.react('✅')
+    msg.guild.channels.get('471794934354018306').send({embed}).then(async (sent) => {
+  await sent.react('✅')
+  await sent.react('❌')
+  await sent.react('✅')
   return msg.reply('**Голосование успешно начато**')
-}
+        })
+ 
