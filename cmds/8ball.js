@@ -8,6 +8,7 @@ exports.info = {description: '~~Это вам не ask.fm~~', required: 'SEND_ME
 exports.run = (client, msg, args) => {
   if(!args.join(' ')) return msg.reply('Я не умею угадывать твои мысли')
   var result = Math.floor((Math.random() * hooysasat.length));
+                 
   var embed = new Discord.RichEmbed()
   .setTitle("8шар - рандомный ответ")
   .setDescription('Мой ответ - ' + hooysasat[result]);)
