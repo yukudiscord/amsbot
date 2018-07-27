@@ -32,6 +32,6 @@ exports.run = async (client, msg, args) => {
       .setTitle('Помощь')
       .setDescription(res)
       .setColor('FFFFFF')
-    msg.channel.send({embed})
+    msg.author.send({embed})
   }
 }
