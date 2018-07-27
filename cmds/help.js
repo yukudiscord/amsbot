@@ -33,6 +33,5 @@ exports.run = async (client, msg, args) => {
       .setDescription(res)
       .setColor('FFFFFF')
     msg.author.send({embed}
-    msg.channel.send("Проверьте ваши личные сообщения")
   }
 }
