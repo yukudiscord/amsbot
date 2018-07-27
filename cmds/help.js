@@ -33,8 +33,6 @@ exports.run = async (client, msg, args) => {
       .setDescription(res)
       .setColor('FFFFFF')
     msg.author.send({embed}
-    var embed = new client.RichEmbed()
-    .setTitle("Проверьте личные сообщения")
-    msg.channel.send({embed})
+    msg.channel.send("Проверьте ваши личные сообщения")
   }
 }
