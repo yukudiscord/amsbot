@@ -4,7 +4,6 @@ exports.run = async (client, msg, args) => {
   var cmd = args.shift()
   if(cmd) {
     try {
-      msg.reply('Проверьте личные сообщения')
       var r = require(`./${cmd}.js`)
       var embed = new client.RichEmbed()
         .setTitle('Помощь')
