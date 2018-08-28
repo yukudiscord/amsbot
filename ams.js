@@ -3,13 +3,6 @@ var client = new Discord.Client()
 
 require('events').EventEmitter.prototype._maxListeners = 100
 client.p = '#'
-// эмодзи
-client.gaypride = '471751443611910155'
-client.info = '471771424508346368'
-client.yes = '462656084419674112'
-client.no = '462656084109164544'
-client.ball = '471976755733856266'
-// конец эмодзи
 client.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 client.owners = ['321268938728144906', '341988428457705482']
 client.loggers = {
@@ -23,9 +16,9 @@ client.on('ready', () => {
 })
 
 client.on('guildMemberAdd', member => {
-  member.addRole('467526203713126410')
+  member.addRole('483934397267968010')
   var embed = new Discord.RichEmbed()
-    .setTitle('Добро пожаловать на сервер AMS')
+    .setTitle('Добро пожаловать на сервер Pepecordia')
     .setDescription('Для дальнейшего общения просим прочитать #information. Там находится вся необходимая информация.')
     .setFooter('Спасибо, что присоединились именно к нам')
     .setThumbnail('https://cdn.discordapp.com/attachments/360125122717155328/467417487323955202/402342-svetik.jpg')
