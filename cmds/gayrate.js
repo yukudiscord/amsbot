@@ -13,6 +13,6 @@ exports.run = async (client, msg, args) => {
   var rated = reverse(u.id)%100
   var embed = new client.RichEmbed()
     .setTitle('Измеритель Гейства 3000')
-    .setDescription(`<@${u.id}> на ${rated}% гей ${client.emojis.get(client.gaypride)}`)
+    .setDescription(`<@${u.id}> на ${rated}% гей`)
   msg.channel.send({embed})
 }
