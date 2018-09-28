@@ -16,12 +16,11 @@ client.on('ready', () => {
 })
 
 client.on('guildMemberAdd', member => {
-  member.addRole('483934397267968010')
   var embed = new Discord.RichEmbed()
-    .setTitle('Добро пожаловать на сервер Pepecordia')
-    .setDescription('Для дальнейшего общения просим прочитать #information. Там находится вся необходимая информация.')
+    .setTitle('Добро пожаловать на сервер #AMS')
+    .setDescription('Для дальнейшего общения просим прочитать <#493440267085676564>. Там находится вся необходимая информация.')
     .setFooter('Спасибо, что присоединились именно к нам')
-    .setThumbnail('https://cdn.discordapp.com/attachments/360125122717155328/467417487323955202/402342-svetik.jpg')
+    .setThumbnail('https://cdn.discordapp.com/attachments/493465448835317760/495199893862875136/JPEG_20180927_191842.jpg')
   member.send({embed})
 })
 
