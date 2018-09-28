@@ -4,7 +4,7 @@ var client = new Discord.Client()
 require('events').EventEmitter.prototype._maxListeners = 100
 client.p = '#'
 client.sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-client.owners = ['341988428457705482']
+client.owners = ['341988428457705482', '406343162651738112']
 client.loggers = {
   'iplogger.com': ['iplogger.com', 'iplogger.org', 'iplogger.ru', '2no.co', 'yip.su'],
   'grabify.link': ['grabify.link', 'starbucksisbadforyou.com', 'bmwforum.co', 'leancoding.co', 'quickmessage.io', 'spottyfly.com', 'spötify.com', 'stopify.co', 'yoütu.be', 'yoütübe.co', 'yoütübe.com', 'xda-developers.io', 'starbucksiswrong.com', 'starbucksisbadforyou.com', 'bucks.as', 'discörd.com', 'minecräft.com', 'cyberh1.xyz', 'discördapp.com', 'freegiftcards.co', 'disçordapp.com', 'iany.pl', 'my-alts.eu', 'l-imgur.pl', 'exec-true.eu', 'tigercore.eu']
