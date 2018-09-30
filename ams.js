@@ -24,31 +24,6 @@ client.on('guildMemberAdd', member => {
   member.send({embed})
 })
 
-    if (reaction.msg.id !== '495929580150849536') return;
-    console.log(reaction.emoji.name);
-    if (reaction.emoji.name !== '🆗') return;
-    let react = reaction.msg.reactions.filter(r => r.users.has(user.id) && r.emoji.name !== '🆗');
-    if (!react) reaction.remove(user);
-    react.forEach((reaction) => {
-        if (reaction.emoji.name === '📣') {
-            reaction.msg.guild.members.get(user.id).addRole('495930327995383834').catch();
-            reaction.remove(user);
-        }
-        if (reaction.emoji.name === '🎚️') {
-            reaction.msg.guild.members.get(user.id).addRole('495930271233736704').catch();
-            reaction.remove(user);
-        }
-        if (reaction.emoji.name === '🎸') {
-            reaction.msg.guild.members.get(user.id).addRole('495930294227173386').catch();
-            reaction.remove(user);
-        }
-        if (reaction.emoji.name === '🔕') {
-            reaction.msg.guild.members.get(user.id).addRole('495930245795545088').catch();
-            reaction.remove(user);
-        }
-    });
-    reaction.remove(user);
-
 client.on('message', msg => {
   if(msg.author.bot) return
   if(msg.content.indexOf(client.p) !== 0) return
