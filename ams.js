@@ -15,15 +15,6 @@ client.on('ready', () => {
   console.log(client.user.tag);
 })
 
-client.on('guildMemberAdd', member => {
-  var embed = new Discord.RichEmbed()
-    .setTitle('Добро пожаловать на сервер #AMS')
-    .setDescription('Для дальнейшего общения просим прочитать <#493440267085676564>. Там находится вся необходимая информация.')
-    .setFooter('Спасибо, что присоединились именно к нам')
-    .setThumbnail('https://cdn.discordapp.com/attachments/493465448835317760/495199893862875136/JPEG_20180927_191842.jpg')
-  member.send({embed})
-})
-
 client.on('message', msg => {
   if(msg.author.bot) return
   if(msg.content.indexOf(client.p) !== 0) return
